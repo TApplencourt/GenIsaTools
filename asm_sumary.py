@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+#https://01.org/sites/default/files/documentation/intel-gfx-prm-osrc-bxt-vol02a-commandreference-instructions.pdf
+#https://software.intel.com/sites/default/files/managed/89/92/micro-2016-ISA-tutorial.pdf
+#https://doc.lagout.org/electronics/Intel-Graphics-Architecture-ISA-and-microarchitecture.pdf
+
 import sys
 
 file = sys.argv[1]
@@ -18,7 +22,8 @@ def yield_opcode(file):
 			if l[0].startswith('('):
 				l.pop(0)
 	
-			# We are now on form op_code + optionational (execution mask) + ...
+			# We are now on form op_code + optional (execution mask) + ...
+			# We will return op_code  and the execution  mask is avalaible
 			if l[1].startswith('('):
 				yield tuple(l[:2])
 			else:
